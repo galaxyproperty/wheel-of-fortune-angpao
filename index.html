@@ -101,9 +101,9 @@
                         <img width="150" src="logo-light.png" alt="">
                         <p class="font-weight-bold text-light mt-3">PROMO CHINESE NEW YEAR 2022</p>
                         <img height="180" class="mb-3" src="lucky-text.svg" alt="">
-                        <div style="background-image: url('agent-column.svg');background-repeat: no-repeat;background-position: center;" class="px-3 py-3">
+                        <div style="background-image: url('agent-column.svg');background-repeat: no-repeat;background-position: center;" class="px-3 pt-4 pb-3">
                             <!-- <img width="150" src="agent-column.svg" alt=""> -->
-                            <h4 id="agent">&nbsp;</h4>
+                            <h4 id="agent" style="font-size: 16px">&nbsp;</h4>
                             <h5 id="pick_angpao">&nbsp;</h5>
                         </div>
                         <!-- <button class="btn btn-default">Skip</button> -->
@@ -115,8 +115,7 @@
                     </div>
                 </div>
             </div>
-        <!-- </div>
-        <div> -->
+            
             <div class="row child">
                 <div class="col-md-12 text-center mb-4">
                     <h1 id="agent_name" style="display: none;">Spin Agent Terlebih Dahulu!</h1>
@@ -171,128 +170,128 @@
             // ];
 
             let sectors = [
-                {color:"#F8D9B2", label:"Aa Ningsih", show: 1},
-                {color:"#FCBB51", label:"Agus Joni", show: 1},
-                {color:"#F16A28", label:"Eva Rista", show: 4},
-                {color:"#F8D9B2", label:"Eni Huang", show: 4},
-                {color:"#FCBB51", label:"Exvida", show: 1},
-                {color:"#F16A28", label:"Heny", show: 1},
-                {color:"#F8D9B2", label:"Marita", show: 3},
-                {color:"#FCBB51", label:"Mirina", show: 5},
-                {color:"#F16A28", label:"Puspanaung", show: 2},
-                {color:"#F8D9B2", label:"Raditya", show: 2},
-                {color:"#FCBB51", label:"Sugiharto", show: 2},
-                {color:"#F16A28", label:"Vania Lenny", show: 3},
-                {color:"#F8D9B2", label:"Yonie", show: 1},
-                {color:"#FCBB51", label:"Novi", show: 1},
-                {color:"#F16A28", label:"Yurindani", show: 1},
-                {color:"#F8D9B2", label:"Rosita", show: 1},
-                {color:"#FCBB51", label:"Naniek", show: 1},
-                {color:"#F16A28", label:"Heru", show: 1},
-                {color:"#F8D9B2", label:"Hilda", show: 1},
-                {color:"#FCBB51", label:"Vony", show: 1},
-                {color:"#F16A28", label:"Vincent", show: 1},
-                {color:"#F8D9B2", label:"Lina Marvel", show: 2},
-                {color:"#FCBB51", label:"Ong Shirley", show: 2},
-                {color:"#F16A28", label:"Sherly", show: 1},
-                {color:"#F8D9B2", label:"Sandra", show: 1},
-                {color:"#FCBB51", label:"Eko Agus", show: 1},
-                {color:"#F16A28", label:"Herni Yurita", show: 1},
-                {color:"#F8D9B2", label:"Farida", show: 2},
-                {color:"#FCBB51", label:"Erni", show: 1},
-                {color:"#F16A28", label:"Evi", show: 4},
-                {color:"#F8D9B2", label:"Abredia", show: 1},
-                {color:"#FCBB51", label:"Benny", show: 1},
-                {color:"#F16A28", label:"Erna", show: 3},
-                {color:"#F8D9B2", label:"Fanny", show: 1},
-                {color:"#FCBB51", label:"Meya", show: 4},
-                {color:"#F16A28", label:"Meylan", show: 1},
-                {color:"#F8D9B2", label:"Shinta", show: 3},
-                {color:"#FCBB51", label:"Marsca", show: 1},
-                {color:"#F16A28", label:"Theodorus", show: 3},
-                {color:"#F8D9B2", label:"Kevin Savaro", show: 1},
-                {color:"#FCBB51", label:"Jenny", show: 2},
-                {color:"#F16A28", label:"Erry", show: 1},
-                {color:"#F8D9B2", label:"Hosun", show: 1},
-                {color:"#FCBB51", label:"Felix Suwarto", show: 4},
-                {color:"#F16A28", label:"Eva Yunani", show: 1},
-                {color:"#F8D9B2", label:"Lily Herawati", show: 1},
-                {color:"#FCBB51", label:"Endang Sulistyowati", show: 1},
-                {color:"#F16A28", label:"Karismawati Djunardi", show: 2},
-                {color:"#F8D9B2", label:"Imanuel Maranathan", show: 1},
-                {color:"#FCBB51", label:"Yosia Irawan", show: 1},
-                {color:"#F16A28", label:"Debby Natalia", show: 1},
-                {color:"#F8D9B2", label:"Dendy", show: 3},
-                {color:"#FCBB51", label:"Teddy", show: 1},
-                {color:"#F16A28", label:"Yuliani", show: 1},
-                {color:"#F8D9B2", label:"Karlina", show: 1},
-                {color:"#FCBB51", label:"Yuliana (Sumatra)", show: 1},
-                {color:"#F16A28", label:"Hannilia", show: 1},
-                {color:"#F8D9B2", label:"Jimmy", show: 1},
-                {color:"#FCBB51", label:"Lila", show: 2},
-                {color:"#F16A28", label:"Ikang", show: 5},
-                {color:"#F8D9B2", label:"Devina", show: 1},
-                {color:"#FCBB51", label:"Johannes Andries", show: 1},
-                {color:"#F16A28", label:"Yenny", show: 3},
-                {color:"#F8D9B2", label:"Ng Tjen Tjen", show: 5},
-                {color:"#FCBB51", label:"Agung Suryo", show: 1},
-                {color:"#F16A28", label:"Hendro Wijaya", show: 1},
-                {color:"#F8D9B2", label:"Hendy", show: 4},
-                {color:"#FCBB51", label:"Hady C", show: 1},
-                {color:"#F16A28", label:"Kakung", show: 1},
-                {color:"#F8D9B2", label:"Dina", show: 2},
-                {color:"#FCBB51", label:"Syaifudin", show: 4},
-                {color:"#F16A28", label:"Rico S", show: 5},
-                {color:"#F8D9B2", label:"Sylvana", show: 4},
-                {color:"#FCBB51", label:"Marco", show: 2},
-                {color:"#F16A28", label:"Bambang", show: 2},
-                {color:"#F8D9B2", label:"Albert", show: 4},
-                {color:"#FCBB51", label:"Freddy", show: 1},
-                {color:"#F16A28", label:"Sylviati", show: 4},
-                {color:"#F8D9B2", label:"Alvian", show: 2},
-                {color:"#FCBB51", label:"Insani", show: 1},
-                {color:"#F16A28", label:"Stephen Gozali", show: 2},
-                {color:"#F8D9B2", label:"Johan Masbudi", show: 1},
-                {color:"#FCBB51", label:"Albertus Rio Djunaidi", show: 1},
-                {color:"#F16A28", label:"Rico Kwantoro", show: 2},
-                {color:"#F8D9B2", label:"Oktavilia Margaret S.", show: 1},
-                {color:"#FCBB51", label:"Johannes WL", show: 1},
-                {color:"#F16A28", label:"David Tanizal", show: 2},
-                {color:"#F8D9B2", label:"Stephanie", show: 1},
-                {color:"#FCBB51", label:"Tri Putra Gunawan", show: 1},
-                {color:"#F16A28", label:"Sonia Sutikno", show: 2},
-                {color:"#F8D9B2", label:"Mery", show: 2},
-                {color:"#FCBB51", label:"Ira", show: 1},
-                {color:"#F16A28", label:"Hadi S", show: 2},
-                {color:"#F8D9B2", label:"Lina T", show: 1},
-                {color:"#FCBB51", label:"Arie", show: 1},
-                {color:"#F16A28", label:"Edwin", show: 1},
-                {color:"#F8D9B2", label:"Edward", show: 1},
-                {color:"#FCBB51", label:"Santana", show: 1},
-                {color:"#F16A28", label:"Vendy", show: 1},
-                {color:"#F8D9B2", label:"Widya", show: 2},
-                {color:"#FCBB51", label:"Elly", show: 3},
-                {color:"#F16A28", label:"Eni", show: 1},
-                {color:"#F8D9B2", label:"Anisa", show: 1},
-                {color:"#FCBB51", label:"Robby", show: 1},
-                {color:"#F16A28", label:"Sisca", show: 1},
-                {color:"#F8D9B2", label:"Judhy", show: 1},
-                {color:"#FCBB51", label:"Rida", show: 1},
-                {color:"#F16A28", label:"Ujang", show: 2},
-                {color:"#F8D9B2", label:"Kukuh", show: 2},
-                {color:"#FCBB51", label:"Ading", show: 8},
-                {color:"#F16A28", label:"Dhona", show: 1},
-                {color:"#F8D9B2", label:"Ferry", show: 2},
-                {color:"#FCBB51", label:"Irene", show: 2},
-                {color:"#F16A28", label:"Junita", show: 2},
-                {color:"#F8D9B2", label:"Liliany", show: 2},
-                {color:"#FCBB51", label:"Socrates", show: 1},
-                {color:"#F16A28", label:"Stella", show: 3},
-                {color:"#F8D9B2", label:"Wendy", show: 3},
-                {color:"#FCBB51", label:"Yuliana (Supreme)", show: 3},
-                {color:"#F16A28", label:"Patrice", show: 1},
-                {color:"#F8D9B2", label:"Henny", show: 1},
-                {color:"#FCBB51", label:"Shirley", show: 1},
+                {color:"#F8D9B2", label:"Aa Ningsih (GALAXY Kuta)", show: 1},
+                {color:"#FCBB51", label:"Agus Joni (GALAXY Kuta)", show: 1},
+                {color:"#F16A28", label:"Eva Rista (GALAXY Kuta)", show: 4},
+                {color:"#F8D9B2", label:"Eni Huang (GALAXY Kuta)", show: 4},
+                {color:"#FCBB51", label:"Exvida (GALAXY Kuta)", show: 1},
+                {color:"#F16A28", label:"Heny (GALAXY Kuta)", show: 1},
+                {color:"#F8D9B2", label:"Marita (GALAXY Kuta)", show: 3},
+                {color:"#FCBB51", label:"Mirina (GALAXY Kuta)", show: 5},
+                {color:"#F16A28", label:"Puspanaung (GALAXY Kuta)", show: 2},
+                {color:"#F8D9B2", label:"Raditya (GALAXY Kuta)", show: 2},
+                {color:"#FCBB51", label:"Sugiharto (GALAXY Kuta)", show: 2},
+                {color:"#F16A28", label:"Vania Lenny (GALAXY Kuta)", show: 3},
+                {color:"#F8D9B2", label:"Yonie (GALAXY Kuta)", show: 1},
+                {color:"#FCBB51", label:"Novi (GALAXY Kuta)", show: 1},
+                {color:"#F16A28", label:"Yurindani (GALAXY Kuta)", show: 1},
+                {color:"#F8D9B2", label:"Rosita (GALAXY Kuta)", show: 1},
+                {color:"#FCBB51", label:"Naniek (GALAXY Kuta)", show: 1},
+                {color:"#F16A28", label:"Heru (GALAXY HR Muhammad)", show: 1},
+                {color:"#F8D9B2", label:"Hilda (GALAXY HR Muhammad)", show: 1},
+                {color:"#FCBB51", label:"Vony (GALAXY HR Muhammad)", show: 1},
+                {color:"#F16A28", label:"Vincent (GALAXY HR Muhammad)", show: 1},
+                {color:"#F8D9B2", label:"Lina Marvel (GALAXY HR Muhammad)", show: 2},
+                {color:"#FCBB51", label:"Ong Shirley (GALAXY HR Muhammad)", show: 2},
+                {color:"#F16A28", label:"Sherly (GALAXY HR Muhammad)", show: 1},
+                {color:"#F8D9B2", label:"Sandra (GALAXY HR Muhammad)", show: 1},
+                {color:"#FCBB51", label:"Eko Agus (GALAXY Nieco)", show: 1},
+                {color:"#F16A28", label:"Herni Yurita (GALAXY Nieco)", show: 1},
+                {color:"#F8D9B2", label:"Farida (GALAXY Puri Indah)", show: 2},
+                {color:"#FCBB51", label:"Erni (GALAXY Puri Indah)", show: 1},
+                {color:"#F16A28", label:"Evi (GALAXY Puri Indah)", show: 4},
+                {color:"#F8D9B2", label:"Abredia (GALAXY Zeven)", show: 1},
+                {color:"#FCBB51", label:"Benny (GALAXY Zeven)", show: 1},
+                {color:"#F16A28", label:"Erna (GALAXY Zeven)", show: 3},
+                {color:"#F8D9B2", label:"Fanny (GALAXY Zeven)", show: 1},
+                {color:"#FCBB51", label:"Meya (GALAXY Zeven)", show: 4},
+                {color:"#F16A28", label:"Meylan (GALAXY Zeven)", show: 1},
+                {color:"#F8D9B2", label:"Shinta (GALAXY Zeven)", show: 3},
+                {color:"#FCBB51", label:"Marsca (GALAXY Zeven)", show: 1},
+                {color:"#F16A28", label:"Theodorus (GALAXY Prime)", show: 3},
+                {color:"#F8D9B2", label:"Kevin Savaro (GALAXY Prime)", show: 1},
+                {color:"#FCBB51", label:"Jenny (GALAXY Central)", show: 2},
+                {color:"#F16A28", label:"Erry (GALAXY Central)", show: 1},
+                {color:"#F8D9B2", label:"Hosun (GALAXY Central)", show: 1},
+                {color:"#FCBB51", label:"Felix Suwarto (GALAXY Jemursari)", show: 4},
+                {color:"#F16A28", label:"Eva Yunani (GALAXY Jemursari)", show: 1},
+                {color:"#F8D9B2", label:"Lily Herawati (GALAXY Jemursari)", show: 1},
+                {color:"#FCBB51", label:"Endang Sulistyowati (GALAXY Malang)", show: 1},
+                {color:"#F16A28", label:"Karismawati Djunardi (GALAXY Malang)", show: 2},
+                {color:"#F8D9B2", label:"Imanuel Maranathan (GALAXY Malang)", show: 1},
+                {color:"#FCBB51", label:"Yosia Irawan (GALAXY Malang)", show: 1},
+                {color:"#F16A28", label:"Debby Natalia (GALAXY Chrima)", show: 1},
+                {color:"#F8D9B2", label:"Dendy (GALAXY Kertajaya)", show: 3},
+                {color:"#FCBB51", label:"Teddy (GALAXY Kertajaya)", show: 1},
+                {color:"#F16A28", label:"Yuliani (GALAXY Kertajaya)", show: 1},
+                {color:"#F8D9B2", label:"Karlina (GALAXY Kertajaya)", show: 1},
+                {color:"#FCBB51", label:"Yuliana (GALAXY Sumatra)", show: 1},
+                {color:"#F16A28", label:"Hannilia (GALAXY Sumatra)", show: 1},
+                {color:"#F8D9B2", label:"Jimmy (GALAXY Sumatra)", show: 1},
+                {color:"#FCBB51", label:"Lila (GALAXY Mayjend)", show: 2},
+                {color:"#F16A28", label:"Ikang (GALAXY Mayjend)", show: 5},
+                {color:"#F8D9B2", label:"Devina (GALAXY Mayjend)", show: 1},
+                {color:"#FCBB51", label:"Johannes Andries (GALAXY Mayjend)", show: 1},
+                {color:"#F16A28", label:"Yenny (GALAXY Mayjend)", show: 3},
+                {color:"#F8D9B2", label:"Ng Tjen Tjen (GALAXY Mayjend)", show: 5},
+                {color:"#FCBB51", label:"Agung Suryo (GALAXY Mayjend)", show: 1},
+                {color:"#F16A28", label:"Hendro Wijaya (GALAXY Mayjend)", show: 1},
+                {color:"#F8D9B2", label:"Hendy (GALAXY Citraland)", show: 4},
+                {color:"#FCBB51", label:"Hady C (GALAXY Citraland)", show: 1},
+                {color:"#F16A28", label:"Kakung (GALAXY Citraland)", show: 1},
+                {color:"#F8D9B2", label:"Dina (GALAXY Citraland)", show: 2},
+                {color:"#FCBB51", label:"Syaifudin (GALAXY Citraland)", show: 4},
+                {color:"#F16A28", label:"Rico S (GALAXY Citraland)", show: 5},
+                {color:"#F8D9B2", label:"Sylvana (GALAXY Citraland)", show: 4},
+                {color:"#FCBB51", label:"Marco (GALAXY Citraland)", show: 2},
+                {color:"#F16A28", label:"Bambang (GALAXY Citraland)", show: 2},
+                {color:"#F8D9B2", label:"Albert (GALAXY Citraland)", show: 4},
+                {color:"#FCBB51", label:"Freddy (GALAXY Citraland)", show: 1},
+                {color:"#F16A28", label:"Sylviati (GALAXY Citraland)", show: 4},
+                {color:"#F8D9B2", label:"Alvian (GALAXY Citraland)", show: 2},
+                {color:"#FCBB51", label:"Insani (GALAXY Citraland)", show: 1},
+                {color:"#F16A28", label:"Stephen Gozali (GALAXY Premier)", show: 2},
+                {color:"#F8D9B2", label:"Johan Masbudi (GALAXY Premier)", show: 1},
+                {color:"#FCBB51", label:"Albertus Rio Djunaidi (GALAXY Premier)", show: 1},
+                {color:"#F16A28", label:"Rico Kwantoro (GALAXY Premier)", show: 2},
+                {color:"#F8D9B2", label:"Oktavilia Margaret S. (GALAXY Premier)", show: 1},
+                {color:"#FCBB51", label:"Johannes WL (GALAXY Premier)", show: 1},
+                {color:"#F16A28", label:"David Tanizal (GALAXY Premier)", show: 2},
+                {color:"#F8D9B2", label:"Stephanie (GALAXY Premier)", show: 1},
+                {color:"#FCBB51", label:"Tri Putra Gunawan (GALAXY Premier)", show: 1},
+                {color:"#F16A28", label:"Sonia Sutikno (GALAXY Premier)", show: 2},
+                {color:"#F8D9B2", label:"Mery (GALAXY CBD)", show: 2},
+                {color:"#FCBB51", label:"Ira (GALAXY CBD)", show: 1},
+                {color:"#F16A28", label:"Hadi S (GALAXY CBD)", show: 2},
+                {color:"#F8D9B2", label:"Lina T (GALAXY CBD)", show: 1},
+                {color:"#FCBB51", label:"Arie (GALAXY CBD)", show: 1},
+                {color:"#F16A28", label:"Edwin (GALAXY Royal CBD)", show: 1},
+                {color:"#F8D9B2", label:"Edward (GALAXY Royal CBD)", show: 1},
+                {color:"#FCBB51", label:"Santana (GALAXY Royal CBD)", show: 1},
+                {color:"#F16A28", label:"Vendy (GALAXY Royal CBD)", show: 1},
+                {color:"#F8D9B2", label:"Widya (GALAXY Blessing)", show: 2},
+                {color:"#FCBB51", label:"Elly (GALAXY Blessing)", show: 3},
+                {color:"#F16A28", label:"Eni (GALAXY Blessing)", show: 1},
+                {color:"#F8D9B2", label:"Anisa (GALAXY Blessing)", show: 1},
+                {color:"#FCBB51", label:"Robby (GALAXY Blessing)", show: 1},
+                {color:"#F16A28", label:"Sisca (GALAXY Blessing)", show: 1},
+                {color:"#F8D9B2", label:"Judhy (GALAXY Blessing)", show: 1},
+                {color:"#FCBB51", label:"Rida (GALAXY Blessing)", show: 1},
+                {color:"#F16A28", label:"Ujang (GALAXY Blessing)", show: 2},
+                {color:"#F8D9B2", label:"Kukuh (GALAXY Blessing)", show: 2},
+                {color:"#FCBB51", label:"Ading (GALAXY Supreme)", show: 8},
+                {color:"#F16A28", label:"Dhona (GALAXY Supreme)", show: 1},
+                {color:"#F8D9B2", label:"Ferry (GALAXY Supreme)", show: 2},
+                {color:"#FCBB51", label:"Irene (GALAXY Supreme)", show: 2},
+                {color:"#F16A28", label:"Junita (GALAXY Supreme)", show: 2},
+                {color:"#F8D9B2", label:"Liliany (GALAXY Supreme)", show: 2},
+                {color:"#FCBB51", label:"Socrates (GALAXY Supreme)", show: 1},
+                {color:"#F16A28", label:"Stella (GALAXY Supreme)", show: 3},
+                {color:"#F8D9B2", label:"Wendy (GALAXY Supreme)", show: 3},
+                {color:"#FCBB51", label:"Yuliana (GALAXY Supreme)", show: 3},
+                {color:"#F16A28", label:"Patrice (GALAXY Supreme)", show: 1},
+                {color:"#F8D9B2", label:"Henny (GALAXY Supreme)", show: 1},
+                {color:"#FCBB51", label:"Shirley (GALAXY Supreme)", show: 1},
             ];
 
             // let total_angpao_galaxy = 0
@@ -338,7 +337,7 @@
                 ctx.rotate(ang + arc / 2);
                 ctx.textAlign = "right";
                 ctx.fillStyle = "#fff";
-                ctx.font = "15px sans-serif";
+                ctx.font = "12px sans-serif";
                 ctx.fillText(sector.label, rad - 10, 10);
                 //
                 ctx.restore();
@@ -373,12 +372,12 @@
                         padding: '3em',
                         color: '#000000',
                         background: '#fff url(trees.png)',
-                        backdrop: `
-                            rgba(0,0,123,0.4)
-                            url("nyan-cat.gif")
-                            left top
-                            no-repeat
-                        `
+                        // backdrop: `
+                        //     rgba(0,0,123,0.4)
+                        //     url("nyan-cat.gif")
+                        //     left top
+                        //     no-repeat
+                        // `
                     })
                     total_pick = sectors[getIndex()].show
                     agent_name = sectors[getIndex()].label
@@ -464,8 +463,7 @@
                 return `
                     <div class="${data.isShow ? '' : temp.includes(index) ? '' : ''} d-inline-block mb-1 align-middle mr-2">
                         <a style=" width: 100px; height: 200px; cursor: pointer;background-image: url(${data.isShow ? 'angpao2.svg' : temp.includes(index) ? 'angpao3.svg' : 'angpao.svg'});background-repeat: no-repeat;background-position: center;" class="angpao-item d-block text-light justify-content-center d-flex align-items-center">
-                            <span class="font-weight-bold" style="${data.isShow ? 'font-size:15px' : 'font-size:30px;'} ${temp.includes(index) ? 'color: #bb2326;' : ''}">${data.isShow ? currency(data.value) + '<div style="font-size:9">'+data.agent+'</div>' : data.text}</span><br>
-                            
+                            <span class="font-weight-bold" style="${data.isShow ? 'font-size:12px' : 'font-size:30px;'} ${temp.includes(index) ? 'color: #bb2326;' : ''}">${data.isShow ? 'Rp '+ currency(data.value) + '<div style="font-size:9">'+data.agent+'</div>' : data.text}</span><br>
                         </a>
                     </div>
                 `;
@@ -510,7 +508,7 @@
 
             $('#btn-open').on('click', function(){
                 
-                if(temp.length != 0){
+                if(temp.length != 0 && temp.length >= total_pick){
                     Swal.fire({
                         title: "Apakah anda yakin ingin membuka angpao?",
                         showDenyButton: true,
@@ -526,12 +524,14 @@
                                 data[temp[i]].isShow = true
                                 data[temp[i]].agent = agent_name
 
-                                message += `Angpao Nomor ${temp[i]+1} = ${currency(data[temp[i]].value)}\n`
+                                message += `Angpao Nomor ${temp[i]+1} = Rp ${currency(data[temp[i]].value)}<br>`
                                 total += data[temp[i]].value
                             }
-                            message += `\nTotal = ${currency(total)}`
+                            // message += `\nTotal = ${currency(total)}`
                             temp = []
-                            sectors.splice(getIndex(), 1);
+                            if(sectors.length > 1){
+                                sectors.splice(getIndex(), 1);
+                            }
                             initData()
                             // alert(message)
                             let timerInterval
@@ -558,7 +558,7 @@
 
                                 Swal.fire(
                                     'Selamat! 🎉🎉',
-                                    `${agent_name} mendapatkan angpao sebesar <b>${currency(total)}</b>`,
+                                    `${message}<br>${agent_name} mendapatkan angpao sebesar <br><b style="font-size: 25px">Rp ${currency(total)}</b>`,
                                     'success'
                                 )
                             })
@@ -576,40 +576,11 @@
                             })
                         }
                     })
-                    // if (confirm("Apakah anda yakin ingin membuka angpao?") == true) {
-                    //     let message = ''
-                    //     let total = 0
-                    //     for (let i = 0; i < temp.length; i++) {
-                    //         data[temp[i]].isShow = true
-                    //         data[temp[i]].agent = agent_name
-
-                    //         message += `Angpao Nomor ${temp[i]+1} = ${currency(data[temp[i]].value)}\n`
-                    //         total += data[temp[i]].value
-                    //     }
-                    //     message += `\nTotal = ${currency(total)}`
-                    //     temp = []
-                    //     sectors.splice(getIndex(), 1);
-                    //     initData()
-                    //     // alert(message)
-                    //     Swal.fire(
-                    //         'Selamat! 🎉🎉',
-                    //         `${agent_name} mendapatkan angpao sebesar ${currency(total)}`,
-                    //         'success'
-                    //     )
-                    //     // alert(`Selamat 🎉🎉 anda mendapatkan angpao sebesar ${currency(total)}`)
-                    //     isOpenAngpao = false;
-                    // } else {
-                    //     alert('Silahkan pilih angpao anda kembali :)')
-                    //     Toast.fire({
-                    //         icon: 'warning',
-                    //         title: 'Silahkan pilih angpao anda kembali'
-                    //     })
-                    // }
                 }else{
                     // alert('Silahkan pilih angpao anda terlebih dahulu.')
                     Toast.fire({
                         icon: 'warning',
-                        title: 'Silahkan pilih angpao anda terlebih dahulu.'
+                        title: 'Silahkan pilih angpao anda terlebih dahulu sesuai jumlah yang di tentukan.'
                     })
                 }
                 
