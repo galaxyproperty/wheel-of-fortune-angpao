@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Pilih Angpao</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            #wheelOfFortune {
+                display: inline-block;
+                position: relative;
+                overflow: hidden;
+            }
+
+            #wheel {
+                display: block;
+            }
+
+            #spin {
+                font: 1.5em/0 sans-serif;
+                user-select: none;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 30%;
+                height: 30%;
+                margin: -15%;
+                background: #fff;
+                color: #fff;
+                box-shadow: 0 0 0 8px currentColor, 0 0px 15px 5px rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                transition: 0.8s;
+            }
+
+            #spin::after {
+                content: "";
+                position: absolute;
+                top: -17px;
+                border: 10px solid transparent;
+                border-bottom-color: currentColor;
+                border-top: none;
+            }
+
+            body{
+                background-color: #bb2326;
+            }
+
+            .button-angpao {
+                /* background-color: #F8D9B2; */
+                background-color: #FCBB51;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .child{
+                position:relative;
+            }
+
+            .cloud{
+                position: absolute;
+                left:10%;
+            }
+            
+        </style>
+
+    </head>
+
+    <body>
+        <div>
+            <div class="row">
+                <img class="cloud" width="800" src="cloud.svg" alt="">
+            </div>
+
+            <div class="row d-flex justify-content-center d-flex align-items-center child" style="min-height: 100vh">
+                <div class="col-md-5 col-sm-12 mb-3">
+                    <div id="wheelOfFortune">
+                        <canvas style="width: 100%;" id="wheel" width="900" height="900"></canvas>
+                        <div id="spin">SPIN</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 mb-3">
+                    <!-- <div>
+                        <img class="cloud" width="200" src="lampion1.svg" alt="">
+                    </div> -->
+                    <div class="text-center" style="display: absolute;">
+                        <img width="150" src="logo-light.png" alt="">
+                        <p class="font-weight-bold text-light mt-3">PROMO CHINESE NEW YEAR 2022</p>
+                        <img height="180" class="mb-3" src="lucky-text.svg" alt="">
+                        <div style="background-image: url('agent-column.svg');background-repeat: no-repeat;background-position: center;" class="px-3 py-3">
+                            <!-- <img width="150" src="agent-column.svg" alt=""> -->
+                            <h4 id="agent">&nbsp;</h4>
+                            <h5 id="pick_angpao">&nbsp;</h5>
+                        </div>
+                        <!-- <button class="btn btn-default">Skip</button> -->
+                        
+                        <button class="btn btn-default" id="choose_angpao" style="border: 0; background: transparent">
+                            <img height="55" src="btn-choose-angpao.svg" alt="">
+                        </button>
+                        <!-- <button class="btn btn-default" id="choose_angpao">Pilih Angpao Sekarang</button> -->
+                    </div>
+                </div>
+            </div>
+        <!-- </div>
+        <div> -->
+            <div class="row child">
+                <div class="col-md-12 text-center mb-4">
+                    <h1 id="agent_name" style="display: none;">Spin Agent Terlebih Dahulu!</h1>
+                    <h4 id="total_angpao" style="display: none;"></h4>
+                </div>
+                <div id="spacer"></div>
+                <div class="col-md-12 col-sm-12 text-center mt-3 pr-5 pl-5" id="angpao"></div>
+                <div class="col-md-12 mt-4">
+                    <div class="row d-flex justify-content-center">
+                        <button id="btn-open" class="btn btn-default button-angpao mt-3 mr-2">BUKA ANGPAO 🎉</button>
+                        <!-- <button id="btn-reset" class="btn btn-default mt-3 mr-2">Reset</button> -->
+                        <button onclick="exportToCsv()" class="btn btn-default button-angpao mt-3 mr-2">EXPORT 🖨</button>
+                        <button id="btn-spin" class="btn btn-default button-angpao mt-3">SPIN 🕹</button>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    
+                    <img style="width: 100%" src="footer.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <script src="https://galaxyproperty.co.id/assets/main/vendor/jquery/jquery.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script src="sweetalert2.min.js"></script>
+
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+
+            // Wheeel ===================================================================
+            
+            // let sectors = [
+            //     {color:"#0bf", label:25, show: 3},
+            //     {color:"#fb0", label:50, show: 3},
+            //     {color:"#0fb", label:100, show: 3},
+            //     {color:"#b0f", label:250, show: 3},
+            // ];
+
+            let sectors = [
+                {color:"#F8D9B2", label:"Aa Ningsih", show: 1},
+                {color:"#FCBB51", label:"Agus Joni", show: 1},
+                {color:"#F16A28", label:"Eva Rista", show: 4},
+                {color:"#F8D9B2", label:"Eni Huang", show: 4},
+                {color:"#FCBB51", label:"Exvida", show: 1},
+                {color:"#F16A28", label:"Heny", show: 1},
+                {color:"#F8D9B2", label:"Marita", show: 3},
+                {color:"#FCBB51", label:"Mirina", show: 5},
+                {color:"#F16A28", label:"Puspanaung", show: 2},
+                {color:"#F8D9B2", label:"Raditya", show: 2},
+                {color:"#FCBB51", label:"Sugiharto", show: 2},
+                {color:"#F16A28", label:"Vania Lenny", show: 3},
+                {color:"#F8D9B2", label:"Yonie", show: 1},
+                {color:"#FCBB51", label:"Novi", show: 1},
+                {color:"#F16A28", label:"Yurindani", show: 1},
+                {color:"#F8D9B2", label:"Rosita", show: 1},
+                {color:"#FCBB51", label:"Naniek", show: 1},
+                {color:"#F16A28", label:"Heru", show: 1},
+                {color:"#F8D9B2", label:"Hilda", show: 1},
+                {color:"#FCBB51", label:"Vony", show: 1},
+                {color:"#F16A28", label:"Vincent", show: 1},
+                {color:"#F8D9B2", label:"Lina Marvel", show: 2},
+                {color:"#FCBB51", label:"Ong Shirley", show: 2},
+                {color:"#F16A28", label:"Sherly", show: 1},
+                {color:"#F8D9B2", label:"Sandra", show: 1},
+                {color:"#FCBB51", label:"Eko Agus", show: 1},
+                {color:"#F16A28", label:"Herni Yurita", show: 1},
+                {color:"#F8D9B2", label:"Farida", show: 2},
+                {color:"#FCBB51", label:"Erni", show: 1},
+                {color:"#F16A28", label:"Evi", show: 4},
+                {color:"#F8D9B2", label:"Abredia", show: 1},
+                {color:"#FCBB51", label:"Benny", show: 1},
+                {color:"#F16A28", label:"Erna", show: 3},
+                {color:"#F8D9B2", label:"Fanny", show: 1},
+                {color:"#FCBB51", label:"Meya", show: 4},
+                {color:"#F16A28", label:"Meylan", show: 1},
+                {color:"#F8D9B2", label:"Shinta", show: 3},
+                {color:"#FCBB51", label:"Marsca", show: 1},
+                {color:"#F16A28", label:"Theodorus", show: 3},
+                {color:"#F8D9B2", label:"Kevin Savaro", show: 1},
+                {color:"#FCBB51", label:"Jenny", show: 2},
+                {color:"#F16A28", label:"Erry", show: 1},
+                {color:"#F8D9B2", label:"Hosun", show: 1},
+                {color:"#FCBB51", label:"Felix Suwarto", show: 4},
+                {color:"#F16A28", label:"Eva Yunani", show: 1},
+                {color:"#F8D9B2", label:"Lily Herawati", show: 1},
+                {color:"#FCBB51", label:"Endang Sulistyowati", show: 1},
+                {color:"#F16A28", label:"Karismawati Djunardi", show: 2},
+                {color:"#F8D9B2", label:"Imanuel Maranathan", show: 1},
+                {color:"#FCBB51", label:"Yosia Irawan", show: 1},
+                {color:"#F16A28", label:"Debby Natalia", show: 1},
+                {color:"#F8D9B2", label:"Dendy", show: 3},
+                {color:"#FCBB51", label:"Teddy", show: 1},
+                {color:"#F16A28", label:"Yuliani", show: 1},
+                {color:"#F8D9B2", label:"Karlina", show: 1},
+                {color:"#FCBB51", label:"Yuliana (Sumatra)", show: 1},
+                {color:"#F16A28", label:"Hannilia", show: 1},
+                {color:"#F8D9B2", label:"Jimmy", show: 1},
+                {color:"#FCBB51", label:"Lila", show: 2},
+                {color:"#F16A28", label:"Ikang", show: 5},
+                {color:"#F8D9B2", label:"Devina", show: 1},
+                {color:"#FCBB51", label:"Johannes Andries", show: 1},
+                {color:"#F16A28", label:"Yenny", show: 3},
+                {color:"#F8D9B2", label:"Ng Tjen Tjen", show: 5},
+                {color:"#FCBB51", label:"Agung Suryo", show: 1},
+                {color:"#F16A28", label:"Hendro Wijaya", show: 1},
+                {color:"#F8D9B2", label:"Hendy", show: 4},
+                {color:"#FCBB51", label:"Hady C", show: 1},
+                {color:"#F16A28", label:"Kakung", show: 1},
+                {color:"#F8D9B2", label:"Dina", show: 2},
+                {color:"#FCBB51", label:"Syaifudin", show: 4},
+                {color:"#F16A28", label:"Rico S", show: 5},
+                {color:"#F8D9B2", label:"Sylvana", show: 4},
+                {color:"#FCBB51", label:"Marco", show: 2},
+                {color:"#F16A28", label:"Bambang", show: 2},
+                {color:"#F8D9B2", label:"Albert", show: 4},
+                {color:"#FCBB51", label:"Freddy", show: 1},
+                {color:"#F16A28", label:"Sylviati", show: 4},
+                {color:"#F8D9B2", label:"Alvian", show: 2},
+                {color:"#FCBB51", label:"Insani", show: 1},
+                {color:"#F16A28", label:"Stephen Gozali", show: 2},
+                {color:"#F8D9B2", label:"Johan Masbudi", show: 1},
+                {color:"#FCBB51", label:"Albertus Rio Djunaidi", show: 1},
+                {color:"#F16A28", label:"Rico Kwantoro", show: 2},
+                {color:"#F8D9B2", label:"Oktavilia Margaret S.", show: 1},
+                {color:"#FCBB51", label:"Johannes WL", show: 1},
+                {color:"#F16A28", label:"David Tanizal", show: 2},
+                {color:"#F8D9B2", label:"Stephanie", show: 1},
+                {color:"#FCBB51", label:"Tri Putra Gunawan", show: 1},
+                {color:"#F16A28", label:"Sonia Sutikno", show: 2},
+                {color:"#F8D9B2", label:"Mery", show: 2},
+                {color:"#FCBB51", label:"Ira", show: 1},
+                {color:"#F16A28", label:"Hadi S", show: 2},
+                {color:"#F8D9B2", label:"Lina T", show: 1},
+                {color:"#FCBB51", label:"Arie", show: 1},
+                {color:"#F16A28", label:"Edwin", show: 1},
+                {color:"#F8D9B2", label:"Edward", show: 1},
+                {color:"#FCBB51", label:"Santana", show: 1},
+                {color:"#F16A28", label:"Vendy", show: 1},
+                {color:"#F8D9B2", label:"Widya", show: 2},
+                {color:"#FCBB51", label:"Elly", show: 3},
+                {color:"#F16A28", label:"Eni", show: 1},
+                {color:"#F8D9B2", label:"Anisa", show: 1},
+                {color:"#FCBB51", label:"Robby", show: 1},
+                {color:"#F16A28", label:"Sisca", show: 1},
+                {color:"#F8D9B2", label:"Judhy", show: 1},
+                {color:"#FCBB51", label:"Rida", show: 1},
+                {color:"#F16A28", label:"Ujang", show: 2},
+                {color:"#F8D9B2", label:"Kukuh", show: 2},
+                {color:"#FCBB51", label:"Ading", show: 8},
+                {color:"#F16A28", label:"Dhona", show: 1},
+                {color:"#F8D9B2", label:"Ferry", show: 2},
+                {color:"#FCBB51", label:"Irene", show: 2},
+                {color:"#F16A28", label:"Junita", show: 2},
+                {color:"#F8D9B2", label:"Liliany", show: 2},
+                {color:"#FCBB51", label:"Socrates", show: 1},
+                {color:"#F16A28", label:"Stella", show: 3},
+                {color:"#F8D9B2", label:"Wendy", show: 3},
+                {color:"#FCBB51", label:"Yuliana (Supreme)", show: 3},
+                {color:"#F16A28", label:"Patrice", show: 1},
+                {color:"#F8D9B2", label:"Henny", show: 1},
+                {color:"#FCBB51", label:"Shirley", show: 1},
+            ];
+
+            // let total_angpao_galaxy = 0
+            // for (let i = 0; i < sectors.length; i++) {
+            //     total_angpao_galaxy += sectors[i].show
+            // }
+
+            // console.log(total_angpao_galaxy)
+
+            let isInit = 0;
+            let total_pick = 0;
+            let agent_name = '';
+            let isOpenAngpao = false;
+
+            let rand = (m, M) => Math.random() * (M - m) + m;
+            let tot = sectors.length;
+            let EL_spin = document.querySelector("#spin");
+            let ctx = document.querySelector("#wheel").getContext('2d');
+            let dia = ctx.canvas.width;
+            let rad = dia / 2;
+            let PI = Math.PI;
+            let TAU = 2 * PI;
+            let arc = TAU / sectors.length;
+
+            let friction = 0.980; // 0.995=soft, 0.99=mid, 0.98=hard
+            let angVel = 0; // Angular velocity
+            let ang = 0; // Angle in radians
+
+            let getIndex = () => Math.floor(tot - ang / TAU * tot) % tot;
+
+            function drawSector(sector, i) {
+                let ang = arc * i;
+                ctx.save();
+                // COLOR
+                ctx.beginPath();
+                ctx.fillStyle = sector.color;
+                ctx.moveTo(rad, rad);
+                ctx.arc(rad, rad, rad, ang, ang + arc);
+                ctx.lineTo(rad, rad);
+                ctx.fill();
+                // TEXT
+                ctx.translate(rad, rad);
+                ctx.rotate(ang + arc / 2);
+                ctx.textAlign = "right";
+                ctx.fillStyle = "#fff";
+                ctx.font = "15px sans-serif";
+                ctx.fillText(sector.label, rad - 10, 10);
+                //
+                ctx.restore();
+            };
+
+            function rotate() {
+
+                let sector = sectors[getIndex()];
+                ctx.canvas.style.transform = `rotate(${ang - PI / 2}rad)`;
+                EL_spin.textContent = !angVel ? "SPIN" : sector.label.split(' ')[0];;
+                // EL_spin.style.background = sector.color;
+                EL_spin.style.background = '#bb2326';
+            }
+
+            function frame() {
+                if (!angVel) return;
+                angVel *= friction; // Decrement velocity by friction
+                if (angVel < 0.002) angVel = 0; // Bring to stop
+                ang += angVel; // Update angle
+                ang %= TAU; // Normalize angle
+                rotate();
+
+                $('#agent').html(sectors[getIndex()].label)
+                $('#pick_angpao').html(`${sectors[getIndex()].show} Angpao`)
+
+                if(!angVel && isInit != 0){
+                    isOpenAngpao = true;
+                    // alert(`Yaay 🎉 ${sectors[getIndex()].label} sekarang giliranmu!`)
+                    Swal.fire({
+                        title: `Yaay!! 🎉 <b>${sectors[getIndex()].label}</b> Sekarang Giliranmu!\n\n ${sectors[getIndex()].show} Angpao`,
+                        width: 600,
+                        padding: '3em',
+                        color: '#000000',
+                        background: '#fff url(trees.png)',
+                        backdrop: `
+                            rgba(0,0,123,0.4)
+                            url("nyan-cat.gif")
+                            left top
+                            no-repeat
+                        `
+                    })
+                    total_pick = sectors[getIndex()].show
+                    agent_name = sectors[getIndex()].label
+                    
+                    // $('#agent_name').html(agent_name != '' ? agent_name : 'Spin Agent Terlebih Dahulu!')
+                    // $('#total_angpao').html(total_pick != 0 ? `(${total_pick} Angpao)` : ``)
+
+                    // $('#agent').html(sectors[getIndex()].label)
+                    // $('#pick_angpao').html(`${sectors[getIndex()].show} Angpao`)
+
+                    // console.log(sector.show)
+                    // console.log(sectors[getIndex()].label)
+
+                    // Remove stock
+                    // sectors[getIndex()].show = sectors[getIndex()].show - 1
+
+                    if(sectors[getIndex()].show < 1){
+                        // Delete array and refresh dom
+                        // ...
+                        // sectors.splice(getIndex(), 1);
+                    }
+                    // sectors.splice(getIndex(), 1);
+                }
+            }
+
+            function engine() {
+                frame();
+                requestAnimationFrame(engine)
+            }
+
+            // INIT
+            init()
+            function init(){
+                sectors.forEach(drawSector);
+                rotate(); // Initial rotation
+                engine(); // Start engine
+                EL_spin.addEventListener("click", () => {
+                    temp = []
+                    initData()
+                    tot = sectors.length;
+                    arc = TAU / sectors.length;
+                    for (let i = 0; i < sectors.length; i++) {
+                        if(i % 3 == 0){
+                            sectors[i].color = '#F8D9B2'
+                        }else if(i % 2 == 0){
+                            sectors[i].color = '#FCBB51'
+                        }else{
+                            sectors[i].color = '#F16A28'
+                        }
+                    }
+                    sectors.forEach(drawSector);
+                    if (!angVel) angVel = rand(0.25, 0.35);
+                    isInit = 1;
+                });
+            }
+
+            $('#choose_angpao').on('click', function(){
+                $('html, body').animate({
+                    scrollTop: $("#spacer").offset().top
+                }, 500);
+                // window.scrollBy(0,600);
+                // $('#agent_name').html(agent_name != '' ? agent_name : 'Spin Agent Terlebih Dahulu!')
+                // $('#total_angpao').html(total_pick != 0 ? `(${total_pick} Angpao)` : ``)
+            })
+
+            // Angpaooo=============================================================
+
+            let temp = []
+
+            $( document ).ready(function() {
+                initData()
+            });
+
+            function initData(){
+                $('#angpao').html('')
+                for (let i = 0; i < data.length; i++) {
+                    $('#angpao').append(divAngpaoItem(i, data[i]))
+                }
+                setOnClick()
+            }
+
+            function divAngpaoItem(index, data){
+                return `
+                    <div class="${data.isShow ? '' : temp.includes(index) ? '' : ''} d-inline-block mb-1 align-middle mr-2">
+                        <a style=" width: 100px; height: 200px; cursor: pointer;background-image: url(${data.isShow ? 'angpao2.svg' : temp.includes(index) ? 'angpao3.svg' : 'angpao.svg'});background-repeat: no-repeat;background-position: center;" class="angpao-item d-block text-light justify-content-center d-flex align-items-center">
+                            <span class="font-weight-bold" style="${data.isShow ? 'font-size:15px' : 'font-size:30px;'} ${temp.includes(index) ? 'color: #bb2326;' : ''}">${data.isShow ? currency(data.value) + '<div style="font-size:9">'+data.agent+'</div>' : data.text}</span><br>
+                            
+                        </a>
+                    </div>
+                `;
+            }
+
+            function setOnClick(){
+                $('.angpao-item').each(function(index, value ){
+                    $(this).on('click', function(){
+                        // data[index].isShow = data[index].isShow ? false : true;
+                        if(isOpenAngpao){
+                            if(temp.includes(index)){
+                                var remove = temp.indexOf(index);
+    
+                                if (remove > -1) {
+                                    temp.splice(remove, 1);
+                                }
+                                // console.log(index)
+                                console.log(temp)
+                            }else{
+                                if(!data[index].isShow && temp.length < total_pick){
+                                    temp.push(index)
+                                    console.log(temp)
+                                }else{
+                                    Toast.fire({
+                                        icon: 'warning',
+                                        title: `Angpao tidak boleh melebihi ${total_pick} buah`
+                                    })
+                                    // alert(`Angpao tidak boleh melebihi ${total_pick} buah`)
+                                }
+                            }
+                            initData()
+                        }else{
+                            Toast.fire({
+                                icon: 'warning',
+                                title: 'Pemilihan angpao tidak tersedia, silahkan spin untuk memilih agent!'
+                            })
+                            // alert('Pemilihan angpao tidak tersedia, silahkan spin untuk memilih agent!')
+                        }
+                    })
+                });
+            }
+
+            $('#btn-open').on('click', function(){
+                
+                if(temp.length != 0){
+                    Swal.fire({
+                        title: "Apakah anda yakin ingin membuka angpao?",
+                        showDenyButton: true,
+                        showCancelButton: false,
+                        confirmButtonText: 'Ya, Buka',
+                        denyButtonText: `Tutup`,
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            let message = ''
+                            let total = 0
+                            for (let i = 0; i < temp.length; i++) {
+                                data[temp[i]].isShow = true
+                                data[temp[i]].agent = agent_name
+
+                                message += `Angpao Nomor ${temp[i]+1} = ${currency(data[temp[i]].value)}\n`
+                                total += data[temp[i]].value
+                            }
+                            message += `\nTotal = ${currency(total)}`
+                            temp = []
+                            sectors.splice(getIndex(), 1);
+                            initData()
+                            // alert(message)
+                            let timerInterval
+                            Swal.fire({
+                                title: 'Sedang Membuka...!',
+                                // html: 'I will close in <b></b> milliseconds.',
+                                timer: 2000,
+                                timerProgressBar: true,
+                                didOpen: () => {
+                                    Swal.showLoading()
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                    }, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            }).then((result) => {
+                                /* Read more about handling dismissals below */
+                                if (result.dismiss === Swal.DismissReason.timer) {
+                                    console.log('I was closed by the timer')
+                                }
+
+                                Swal.fire(
+                                    'Selamat! 🎉🎉',
+                                    `${agent_name} mendapatkan angpao sebesar <b>${currency(total)}</b>`,
+                                    'success'
+                                )
+                            })
+                            // Swal.fire(
+                            //     'Selamat! 🎉🎉',
+                            //     `${agent_name} mendapatkan angpao sebesar <b>${currency(total)}</b>`,
+                            //     'success'
+                            // )
+                            // alert(`Selamat 🎉🎉 anda mendapatkan angpao sebesar ${currency(total)}`)
+                            isOpenAngpao = false;
+                        } else if (result.isDenied) {
+                            Toast.fire({
+                                icon: 'warning',
+                                title: 'Silahkan pilih angpao anda kembali'
+                            })
+                        }
+                    })
+                    // if (confirm("Apakah anda yakin ingin membuka angpao?") == true) {
+                    //     let message = ''
+                    //     let total = 0
+                    //     for (let i = 0; i < temp.length; i++) {
+                    //         data[temp[i]].isShow = true
+                    //         data[temp[i]].agent = agent_name
+
+                    //         message += `Angpao Nomor ${temp[i]+1} = ${currency(data[temp[i]].value)}\n`
+                    //         total += data[temp[i]].value
+                    //     }
+                    //     message += `\nTotal = ${currency(total)}`
+                    //     temp = []
+                    //     sectors.splice(getIndex(), 1);
+                    //     initData()
+                    //     // alert(message)
+                    //     Swal.fire(
+                    //         'Selamat! 🎉🎉',
+                    //         `${agent_name} mendapatkan angpao sebesar ${currency(total)}`,
+                    //         'success'
+                    //     )
+                    //     // alert(`Selamat 🎉🎉 anda mendapatkan angpao sebesar ${currency(total)}`)
+                    //     isOpenAngpao = false;
+                    // } else {
+                    //     alert('Silahkan pilih angpao anda kembali :)')
+                    //     Toast.fire({
+                    //         icon: 'warning',
+                    //         title: 'Silahkan pilih angpao anda kembali'
+                    //     })
+                    // }
+                }else{
+                    // alert('Silahkan pilih angpao anda terlebih dahulu.')
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Silahkan pilih angpao anda terlebih dahulu.'
+                    })
+                }
+                
+            })
+            
+            // $('#btn-reset').on('click', function(){
+                
+            //     for (let i = 0; i < data.length; i++) {
+            //         data[i].isShow = false
+            //         temp = []
+            //     }
+            //     initData()
+                
+            // })
+            
+            $('#btn-spin').on('click', function(){
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            })
+
+            function currency(num){
+                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            }
+
+            exportToCsv = function() {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Data angpao telah di export'
+                })
+                var download_data = [
+                    ["Nama Agent", "No Angpao", "Nominal"],
+                ];
+
+                for (let i = 0; i < data.length; i++) {
+                    download_data.push([
+                        data[i].agent,
+                        data[i].text,
+                        data[i].value,
+                    ])
+                }
+
+                var CsvString = "";
+                download_data.forEach(function(RowItem, RowIndex) {
+                    RowItem.forEach(function(ColItem, ColIndex) {
+                    CsvString += ColItem + ',';
+                    });
+                    CsvString += "\r\n";
+                });
+                CsvString = "data:application/csv," + encodeURIComponent(CsvString);
+                var x = document.createElement("A");
+                x.setAttribute("href", CsvString );
+                x.setAttribute("download","Angpao Data.csv");
+                document.body.appendChild(x);
+                x.click();
+            }
+
+            let data = []
+
+            let angpao_value = []
+
+            for (let i = 0; i < 64; i++) {
+                angpao_value.push(25000)
+            }
+            for (let i = 0; i < 136; i++) {
+                angpao_value.push(50000)
+            }
+            for (let i = 0; i < 20; i++) {
+                angpao_value.push(100000)
+            }
+            for (let i = 0; i < 3; i++) {
+                angpao_value.push(250000)
+            }
+
+            // Set random array value index
+            angpao_value = angpao_value.sort(() => Math.random() - 0.5)
+
+            for (let i = 0; i < 223; i++) {
+                data.push(
+                    {
+                        id: i,
+                        // value: Math.floor((Math.random() * 10) + 1) * 100000,
+                        value: angpao_value[i],
+                        text: (i+1).toString(),
+                        isShow: false,
+                        agent: null,
+                    }
+                )
+            }
+        </script>
+    </body>
+</html>
