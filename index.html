@@ -147,6 +147,30 @@
         <script src="sweetalert2.min.js"></script>
 
         <script>
+            // Loads the tick audio sound in to an audio object.
+			let spinner_audio = new Audio('tick.mp3');
+			let winner_audio = new Audio('sound-winner.wav');
+			let treassure_audio = new Audio('treassure.wav');
+			let counter = new Audio('counter.wav');
+			let agent_choosen_audio = new Audio('agent-choosen.wav');
+			let choose_angpao_audio = new Audio('choose-angpao.wav');
+
+            // This function is called when the sound is to be played.
+            function playSoundSpinner(audio)
+            {
+                // Stop and rewind the sound if it already happens to be playing.
+                audio.pause();
+                audio.currentTime = 0.1;
+
+                // Play the sound.
+                audio.play();
+            }
+
+            function playSound(audio){
+                // Play the sound.
+                audio.play();
+            }
+
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -350,6 +374,10 @@
                 EL_spin.textContent = !angVel ? "SPIN" : sector.label.split(' ')[0];;
                 // EL_spin.style.background = sector.color;
                 EL_spin.style.background = '#bb2326';
+
+                if(angVel > 0.006){
+                    playSoundSpinner(spinner_audio)
+                }
             }
 
             function frame() {
@@ -364,6 +392,7 @@
                 $('#pick_angpao').html(`${sectors[getIndex()].show} Angpao`)
 
                 if(!angVel && isInit != 0){
+                    playSound(agent_choosen_audio)
                     isOpenAngpao = true;
                     // alert(`Yaay 🎉 ${sectors[getIndex()].label} sekarang giliranmu!`)
                     Swal.fire({
@@ -415,6 +444,7 @@
                 rotate(); // Initial rotation
                 engine(); // Start engine
                 EL_spin.addEventListener("click", () => {
+                    // playSound()
                     temp = []
                     initData()
                     tot = sectors.length;
@@ -435,6 +465,8 @@
             }
 
             $('#choose_angpao').on('click', function(){
+                
+                playSound(choose_angpao_audio)
                 $('html, body').animate({
                     scrollTop: $("#spacer").offset().top
                 }, 500);
@@ -472,6 +504,7 @@
             function setOnClick(){
                 $('.angpao-item').each(function(index, value ){
                     $(this).on('click', function(){
+                        playSound(spinner_audio)
                         // data[index].isShow = data[index].isShow ? false : true;
                         if(isOpenAngpao){
                             if(temp.includes(index)){
@@ -507,8 +540,10 @@
             }
 
             $('#btn-open').on('click', function(){
+                playSound(spinner_audio)
                 
                 if(temp.length != 0 && temp.length >= total_pick){
+                    let isDefaultAudio = true
                     Swal.fire({
                         title: "Apakah anda yakin ingin membuka angpao?",
                         showDenyButton: true,
@@ -520,9 +555,14 @@
                         if (result.isConfirmed) {
                             let message = ''
                             let total = 0
+
                             for (let i = 0; i < temp.length; i++) {
                                 data[temp[i]].isShow = true
                                 data[temp[i]].agent = agent_name
+
+                                if(data[temp[i]].value > 100000){
+                                    isDefaultAudio = false
+                                }
 
                                 message += `Angpao Nomor ${temp[i]+1} = Rp ${currency(data[temp[i]].value)}<br>`
                                 total += data[temp[i]].value
@@ -541,6 +581,7 @@
                                 timer: 1500,
                                 timerProgressBar: true,
                                 didOpen: () => {
+                                    playSound(counter)
                                     Swal.showLoading()
                                     const b = Swal.getHtmlContainer().querySelector('b')
                                     timerInterval = setInterval(() => {
@@ -554,6 +595,12 @@
                                 /* Read more about handling dismissals below */
                                 if (result.dismiss === Swal.DismissReason.timer) {
                                     console.log('I was closed by the timer')
+                                }
+
+                                if(isDefaultAudio){
+                                    playSound(treassure_audio)
+                                }else{
+                                    playSound(winner_audio)
                                 }
 
                                 Swal.fire(
@@ -597,6 +644,7 @@
             // })
             
             $('#btn-spin').on('click', function(){
+                playSound(spinner_audio)
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
             })
@@ -606,6 +654,7 @@
             }
 
             exportToCsv = function() {
+                playSound(spinner_audio)
                 Toast.fire({
                     icon: 'success',
                     title: 'Data angpao telah di export'
