@@ -462,8 +462,8 @@
             function divAngpaoItem(index, data){
                 return `
                     <div class="${data.isShow ? '' : temp.includes(index) ? '' : ''} d-inline-block mb-1 align-middle mr-2">
-                        <a style=" width: 100px; height: 200px; cursor: pointer;background-image: url(${data.isShow ? 'angpao2.svg' : temp.includes(index) ? 'angpao3.svg' : 'angpao.svg'});background-repeat: no-repeat;background-position: center;" class="angpao-item d-block text-light justify-content-center d-flex align-items-center">
-                            <span class="font-weight-bold" style="${data.isShow ? 'font-size:12px' : 'font-size:30px;'} ${temp.includes(index) ? 'color: #bb2326;' : ''}">${data.isShow ? 'Rp '+ currency(data.value) + '<div style="font-size:9">'+data.agent+'</div>' : data.text}</span><br>
+                        <a style=" width: 100px; height: 200px; cursor: pointer;background-image: url(${data.isShow ? 'angpao2.svg' : temp.includes(index) ? 'angpao5.svg' : 'angpao.svg'});background-repeat: no-repeat;background-position: center;" class="angpao-item d-block text-light justify-content-center d-flex align-items-center">
+                            <span class="font-weight-bold" style="${data.isShow ? 'font-size:12px' : 'font-size:30px;'}">${data.isShow ? 'Rp '+ currency(data.value) + '<div style="font-size:9">'+data.agent+'</div>' : data.text}</span><br>
                         </a>
                     </div>
                 `;
